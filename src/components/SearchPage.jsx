@@ -5,7 +5,7 @@ import Home from '../components/Home';
 
 const API_KEY = "ZUmSFKgLX1vSTTJvZ1USdGMarZfkaeek8Ql99p9xXUkzVyt5U5bO62KJ";
 
-function SearchPage() {
+function SearchPage({query,setQuery}) {
   const { searchTerm } = useParams();
   const [images, setImages] = useState([]);
   const [search, setSearch] = useState(searchTerm || 'mumbai');
@@ -33,7 +33,7 @@ function SearchPage() {
     }
   }, [search]);
 
-  return <Home setSearch={setSearch} images={images} />;
+  return <Home  query={query} setQuery={setQuery} setSearch={setSearch} images={images} />;
 }
 
 export default SearchPage;

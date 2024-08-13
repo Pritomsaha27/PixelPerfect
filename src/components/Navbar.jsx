@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
 import logo from "../assets/logo1.png";
 import { useNavigate } from 'react-router-dom';
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-function Navbar({ setSearch }) {
-  const [query, setQuery] = useState('');
+function Navbar({ setSearch ,query,setQuery }) {
+  
   const navigate = useNavigate();
 
   const handleKeyDown = (e) => {
@@ -25,8 +24,10 @@ function Navbar({ setSearch }) {
   };
 
   const handleLogoClick = () => {
-    setSearch(''); 
-    navigate('/'); 
+    setSearch("mumbai"); 
+    navigate(`/`); 
+    setQuery("")
+    
   };
 
   return (
