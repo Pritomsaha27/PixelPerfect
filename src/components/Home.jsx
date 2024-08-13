@@ -2,10 +2,11 @@ import React from 'react';
 import Navbar from './Navbar';
 import HomeTab from './HomeTab';
 
-function Home({ images, setSearch,query,setQuery }) {
+function Home({ images, setSearch,query,setQuery,setPage }) {
+
   return (
     <>
-      <Navbar query={query} setQuery={setQuery} setSearch={setSearch} />
+      <Navbar query={query} setQuery={setQuery} setPage={setPage} setSearch={setSearch} />
       <HomeTab setQuery={setQuery} />
       <div className="px-2 sm:px-6 md:px-10 lg:px-20 xl:px-40">
         <div className="grid grid-cols-2 mt-10 gap-2 md:grid-cols-3">

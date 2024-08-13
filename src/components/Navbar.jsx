@@ -2,7 +2,7 @@ import logo from "../assets/logo1.png";
 import { useNavigate } from 'react-router-dom';
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-function Navbar({ setSearch ,query,setQuery }) {
+function Navbar({ setSearch, query, setQuery,setPage }) {
   
   const navigate = useNavigate();
 
@@ -20,14 +20,15 @@ function Navbar({ setSearch ,query,setQuery }) {
       setSearch(formattedQuery); 
       navigate(`/${formattedQuery}`);
       setQuery(""); 
+      document.activeElement.blur();
     }
   };
 
   const handleLogoClick = () => {
-    setSearch("mumbai"); 
     navigate(`/`); 
-    setQuery("")
-    
+    setSearch("mumbai"); 
+    setQuery(""); 
+    setPage(1)
   };
 
   return (
