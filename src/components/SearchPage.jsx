@@ -71,7 +71,7 @@ function SearchPage({ query, setQuery }) {
     }
   }, [location.pathname]);
 
-  return <Home query={query} setQuery={setQuery} setPage={se} setSearch={setSearch} images={images} />;
+  return <Home query={query} setQuery={setQuery} setPage={setPage} setSearch={setSearch} images={images} />;
 }
 
 export default SearchPage;
