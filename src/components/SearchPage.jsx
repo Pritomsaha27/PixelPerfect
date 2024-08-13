@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-import axios from 'axios';
-import Home from '../components/Home';
+import { useEffect, useState } from "react";
+import { useParams, useLocation } from "react-router-dom";
+import axios from "axios";
+import Home from "../components/Home";
 
 const API_KEY = "ZUmSFKgLX1vSTTJvZ1USdGMarZfkaeek8Ql99p9xXUkzVyt5U5bO62KJ";
 
 function SearchPage({ query, setQuery }) {
   const { searchTerm } = useParams();
   const [images, setImages] = useState([]);
-  const [search, setSearch] = useState(searchTerm || 'mumbai');
+  const [search, setSearch] = useState(searchTerm || "mumbai");
   const [page, setPage] = useState(1);
   const location = useLocation();
 
@@ -17,16 +17,14 @@ function SearchPage({ query, setQuery }) {
     setPage(1);
   };
 
-  // Update search term and reset page on searchTerm change
   useEffect(() => {
     if (searchTerm) {
       setSearch(searchTerm);
-      setPage(1); // Reset page to 1 when search term changes
-      setImages([]); // Clear the current images
+      setPage(1);
+      setImages([]);
     }
   }, [searchTerm]);
 
-  // Fetch images whenever search term or page changes
   useEffect(() => {
     const fetchImages = async () => {
       const res = await axios.get(
@@ -37,41 +35,44 @@ function SearchPage({ query, setQuery }) {
           },
         }
       );
-      setImages((prevImages) => [...prevImages, ...res.data.photos]); // Append new images to the existing array
+      setImages((prevImages) => [...prevImages, ...res.data.photos]);
     };
 
     if (search) {
       fetchImages();
     }
-  }, [search, page]); // dependency array
+  }, [search, page]);
 
-  // Handle infinite scroll and update page number
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight;
       const currentHeight = window.scrollY + window.innerHeight;
       if (currentHeight >= totalHeight) {
-        setPage((prevPage) => prevPage + 1); 
+        setPage((prevPage) => prevPage + 1);
       }
-      console.log(`Total Height: ${totalHeight}px, Current Scroll Position: ${currentHeight}px`);
     };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Cleanup event listener on component unmount
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  // Clear images when navigating to home page
   useEffect(() => {
-    if (location.pathname === '/') {
+    if (location.pathname === "/") {
       clearImages();
     }
   }, [location.pathname]);
-
-  return <Home query={query} setQuery={setQuery} setPage={setPage} setSearch={setSearch} images={images} />;
+console.log(location.pathname);
+  return (
+    <Home
+      url={location.pathname}
+      query={query}
+      setQuery={setQuery}
+      setPage={setPage}
+      setSearch={setSearch}
+      images={images}
+    />
+  );
 }
 
 export default SearchPage;
