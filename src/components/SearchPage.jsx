@@ -10,11 +10,13 @@ function SearchPage({ query, setQuery }) {
   const [images, setImages] = useState([]);
   const [search, setSearch] = useState(searchTerm || "mumbai");
   const [page, setPage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0); 
   const location = useLocation();
 
   const clearImages = () => {
     setImages([]);
     setPage(1);
+    setTotalResults(0); 
   };
 
   useEffect(() => {
@@ -22,6 +24,7 @@ function SearchPage({ query, setQuery }) {
       setSearch(searchTerm);
       setPage(1);
       setImages([]);
+      setTotalResults(0); 
     }
   }, [searchTerm]);
 
@@ -36,8 +39,11 @@ function SearchPage({ query, setQuery }) {
         }
       );
       setImages((prevImages) => [...prevImages, ...res.data.photos]);
+      setTotalResults(res.data.total_results); 
+     
+      const photos = res.data.photos;
     };
-
+    
     if (search) {
       fetchImages();
     }
@@ -47,7 +53,7 @@ function SearchPage({ query, setQuery }) {
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight;
       const currentHeight = window.scrollY + window.innerHeight;
-      if (currentHeight >= totalHeight) {
+      if (currentHeight >= totalHeight - 100) {
         setPage((prevPage) => prevPage + 1);
       }
     };
@@ -62,7 +68,7 @@ function SearchPage({ query, setQuery }) {
       clearImages();
     }
   }, [location.pathname]);
-console.log(location.pathname);
+
   return (
     <Home
       url={location.pathname}
@@ -71,6 +77,8 @@ console.log(location.pathname);
       setPage={setPage}
       setSearch={setSearch}
       images={images}
+      totalResults={totalResults}
+
     />
   );
 }

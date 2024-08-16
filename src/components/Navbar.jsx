@@ -33,26 +33,26 @@ function Navbar({ setSearch, query, setQuery,setPage }) {
 
   return (
     <nav className="fixed top-0 w-full bg-white shadow-md">
-      <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 xl:px-16">
+      <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4">
         <div onClick={handleLogoClick} className="cursor-pointer">
-          <img className='w-12' src={logo} alt="Logo" />
+          <img className='w-16' src={logo} alt="Logo" />
         </div>
 
-        <form className="relative w-full text-xs my-2 max-w-md mx-4" onSubmit={handleSearch}>
+        <form className="relative w-full text-xs lg:text-base  my-2 max-w-md mx-4" onSubmit={handleSearch}>
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Search From Over 3.2M+ Photos"
-            className="w-full py-2 bg-gray-100 h-8 px-4 rounded-md focus:outline-none pr-10"
+            className="w-full  bg-gray-100 h-10 px-4 rounded-md focus:outline-none pr-10"
           />
           <button type="submit" className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-transparent border-none cursor-pointer">
             <FaMagnifyingGlass className="text-gray-500 hover:text-black" />
           </button>
         </form>
 
-        <div className="text-md sm:text-sm md:text-md font-medium">
+        <div className="text-md sm:text-sm md:text-xl font-medium">
           Categories
         </div>
       </div>

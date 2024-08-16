@@ -16,7 +16,7 @@ function HomeTab({setQuery}) {
   }, [location.pathname]);
 
   return (
-    <div className="text-sm items-center text-center justify-center mt-16 font-bold flex">
+    <div className="text-sm items-center lg:text-xl text-center justify-center mt-20 font-bold flex">
       {buttons.map((buttonText) => (
         <Link
           key={buttonText}
