@@ -53,7 +53,7 @@ function Home({ images, setSearch, query, setQuery, setPage, url, totalResults }
         setLikedPhotos(likedPhotos.filter((id) => id !== photoId));
       } else {
         setLikedPhotos([...likedPhotos, photoId]);
-        await axios.post('https://pixelperfect-rauk.onrender.com/api/save-liked-photo', {
+        await axios.post(`https://pixelperfect-rauk.onrender.com/api/save-liked-photo`, {
           photoId,
           userId: user.sub,
         });
