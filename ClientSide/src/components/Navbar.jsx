@@ -3,9 +3,9 @@ import React, { useContext } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaUserCircle } from "react-icons/fa";
-import { SearchContext } from '../context/SearchContext'; // Import the context
+import { SearchContext } from '../context/SearchContext'; 
 function Navbar() {
-  const { setSearch, query, setQuery, setPage } = useContext(SearchContext); // Access the search state from the context
+  const { setSearch, query, setQuery, setPage } = useContext(SearchContext); 
 
   const navigate = useNavigate();
 

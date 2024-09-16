@@ -9,7 +9,7 @@ function PhotoGalleryById() {
   const [selectedAltText, setSelectedAltText] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [photos, setPhotos] = useState([]); // State to store liked photos
+  const [photos, setPhotos] = useState([]); 
 
   const { isAuthenticated, user,logout } = useAuth0();
 

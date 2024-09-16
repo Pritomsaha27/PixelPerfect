@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import HomeTab from './HomeTab';
 import ImageModal from '../components/ImageModal';
-import { FaHeart } from "react-icons/fa"; // Import the love icon
+import { FaHeart } from "react-icons/fa"; 
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -11,7 +11,7 @@ function Home({ images, setSearch, query, setQuery, setPage, url, totalResults }
   const [selectedAltText, setSelectedAltText] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [likedPhotos, setLikedPhotos] = useState([]); // State to store liked photos
+  const [likedPhotos, setLikedPhotos] = useState([]); 
 
   const { isAuthenticated, user } = useAuth0();
 
@@ -51,7 +51,6 @@ function Home({ images, setSearch, query, setQuery, setPage, url, totalResults }
       const alreadyLiked = likedPhotos.includes(photoId);
       if (alreadyLiked) {
         setLikedPhotos(likedPhotos.filter((id) => id !== photoId));
-        // Optional: You could add an API call to remove the photo from the user's liked list in the database
       } else {
         setLikedPhotos([...likedPhotos, photoId]);
         await axios.post('http://localhost:5000/api/save-liked-photo', {
@@ -82,7 +81,7 @@ function Home({ images, setSearch, query, setQuery, setPage, url, totalResults }
     <Navbar query={query} setQuery={setQuery} setPage={setPage} setSearch={setSearch} />
     </div>
       <HomeTab setQuery={setQuery} />
-      <div className="px-2 sm:px-6 md:px-10 lg:px-20 xl:px-40 mt-20 z-0"> {/* Add mt-20 for spacing from navbar */}
+      <div className="px-2 sm:px-6 md:px-10 lg:px-20 xl:px-40 mt-20 z-0"> 
         <p className='mt-4 lg:text-3xl text-2xl font-semibold text-neutral-800'>{Tittle}</p>
         <p className='mt-2 text-neutral-600 lg:text-base text-sm font-bold'>Total Results: {totalResults}</p> 
         <div className="grid grid-cols-2 mt-2 gap-2 md:grid-cols-3">

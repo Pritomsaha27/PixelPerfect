@@ -2,7 +2,6 @@ import React from 'react';
 import { FaDownload } from "react-icons/fa6";
 function ImageModal({ isOpen, onClose, imageSrc, photographerName, altText }) {
   if (!isOpen) return null;
-// Function to handle the download
 const handleDownload = async () => {
     try {
       const response = await fetch(imageSrc);
@@ -10,11 +9,11 @@ const handleDownload = async () => {
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `${altText || 'image'}.jpg`; // Set the filename using the alt text or default to 'image'
+      link.download = `${altText || 'image'}.jpg`; 
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      window.URL.revokeObjectURL(url); // Clean up the object URL
+      window.URL.revokeObjectURL(url); 
     } catch (error) {
       console.error('Download failed:', error);
     }

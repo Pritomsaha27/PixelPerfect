@@ -1,6 +1,6 @@
 import React, { useState, useEffect,useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { SearchContext } from '../context/SearchContext'; // Import the context
+import { SearchContext } from '../context/SearchContext'; 
 
 function HomeTab() {
   const {query, setQuery } = useContext(SearchContext);
