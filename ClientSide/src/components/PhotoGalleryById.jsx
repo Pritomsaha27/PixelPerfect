@@ -31,7 +31,7 @@ function PhotoGalleryById() {
     if (isAuthenticated) {
       const fetchLikedPhotos = async () => {
         try {
-          const res = await axios.get(`http://localhost:5000/api/get-liked-photos`, {
+          const res = await axios.get(`https://pixelperfect-rauk.onrender.com/api/get-liked-photos`, {
             params: { auth0Id: user.sub },
           });
 

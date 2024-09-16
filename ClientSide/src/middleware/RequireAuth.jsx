@@ -19,7 +19,7 @@ const RequireAuth = ({ children }) => {
 
     const addUser = async (user) => {
       try {
-        await axios.post('http://localhost:5000/api/save-user', {
+        await axios.post('https://pixelperfect-rauk.onrender.com/api/save-user', {
           name: user.name,
           email: user.email,
           auth0Id: user.sub, 
