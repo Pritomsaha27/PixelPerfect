@@ -33,7 +33,7 @@ function Home({ images, setSearch, query, setQuery, setPage, url, totalResults }
     if (isAuthenticated) {
       const fetchLikedPhotos = async () => {
         try {
-          const res = await axios.get('http://localhost:5000/api/get-liked-photos', {
+          const res = await axios.get('https://pixelperfect-rauk.onrender.com/api/get-liked-photos', {
             params: { auth0Id: user.sub },
           });
           setLikedPhotos(res.data.likedPhotos || []);
@@ -53,7 +53,7 @@ function Home({ images, setSearch, query, setQuery, setPage, url, totalResults }
         setLikedPhotos(likedPhotos.filter((id) => id !== photoId));
       } else {
         setLikedPhotos([...likedPhotos, photoId]);
-        await axios.post('http://localhost:5000/api/save-liked-photo', {
+        await axios.post('https://pixelperfect-rauk.onrender.com/api/save-liked-photo', {
           photoId,
           userId: user.sub,
         });
