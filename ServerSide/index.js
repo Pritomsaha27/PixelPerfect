@@ -7,9 +7,11 @@ const userRoutes = require('./routes/userRoutes');
 const app = express();
 
 app.use(express.json());
-app.use(cors({
-  origin: '*'
-}));
+const corsOptions = {
+  origin: 'https://pixelperfectapp.netlify.app', 
+};
+
+app.use(cors(corsOptions));
 
 // MongoDB connection
 mongoose.connect(mongoURI)
